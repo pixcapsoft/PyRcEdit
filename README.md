@@ -78,7 +78,13 @@ pyrcedit "path-to-file.exe" [options...]
 
 ---
 
-## 🤝 Credits
+## 🤝 Contributing
+
+Contributions are always welcome! Please read our [contribution guidelines](CONTRIBUTING.md) first to get started.
+
+---
+
+## 🙏 Credits
 
 *   Original approach and C++ implementation by the [Electron team](https://github.com/electron/rcedit).
 *   This Python port brings frictionless, scriptable metadata modification to typical continuous integration (CI) workflows on Windows using Python.
