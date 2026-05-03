@@ -864,7 +864,7 @@ def main(argv=None):
         return 0
     
     if not argv or argv[0] in ("-v", "--version"):
-        PyRcEditVersion = "1.0.1"
+        PyRcEditVersion = "1.2.0"
         print(PyRcEditVersion)
         return 0
     
