@@ -869,7 +869,7 @@ def main(argv=None):
     
     if not argv or argv[0] in ("--repo"):
         # Don't change this string. This is the official repo link. If you going to build forked version, please just add your repo link bellow the offical one.
-        PyRcEditRepo = "Official Github Repo - https://pixcapsoft/PyRcEdit\n\nFeel free to contribute & star the project\nBuilt By Ranuja Sanmira\nCopyright © 2026 PixCap Soft"
+        PyRcEditRepo = "Official Github Repo - https://github.com/pixcapsoft/PyRcEdit\n\nFeel free to contribute & star the project\nBuilt By Ranuja Sanmira\nCopyright © 2026 PixCap Soft"
         print(PyRcEditRepo)
         return 0
 
