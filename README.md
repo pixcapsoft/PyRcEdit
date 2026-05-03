@@ -8,6 +8,7 @@
 It is a fast, command-line utility used to edit embedded resources of Windows PE files (`.exe` / `.dll`). Written in pure Python and leveraging `ctypes` to call Win32 APIs, PyRcEdit saves you the hassle of setting up a heavy C++ build toolchain (CMake, Visual Studio) that the original tool required.
 
 > **Note:** Because it uses native Win32 APIs for safely modifying the Portable Executable (PE) structure, it currently runs natively on **Windows only**.
+> **Note:** Some .exe, .dll files can be corrupted after using PyRcEdit on it. We highly recomend to you **have copy of your file** before use PyRcEdit on that file.
 
 ---
 
@@ -26,11 +27,11 @@ It is a fast, command-line utility used to edit embedded resources of Windows PE
 
 ### Prerequisites
 *   Windows OS
-*   Python 3.11+
+*   Python 3.11+ (If you want build from source)
 
 ### Basic Usage
 
-Simply run the script with your target executable and the desired flags:
+Simply run the PyRcEdit with your target executable and the desired flags:
 
 ```bash
 pyrcedit "path-to-file.exe" [options...]
@@ -38,8 +39,10 @@ pyrcedit "path-to-file.exe" [options...]
 
 > **Pro Tip:** You can chain multiple options in a single command!
 > ```bash
-> pyrcedit "app.exe" --set-icon "icon.ico" --set-file-version "1.0.0.0"
+> pyrcedit "E:\MyFile\app.exe" --set-icon "icon.ico" --set-file-version "1.0.0.0"
 > ```
+
+> **Note:** PyRcEdit required full path to your executable file. Don't provide just a name even you are in the same folder as file. Otherwise you'll get `fatal error : Unable to commit change error`. Just give full path to exe file as in example.
 
 ---
 
@@ -49,6 +52,8 @@ pyrcedit "path-to-file.exe" [options...]
 | Command | Description |
 |---|---|
 | `-h`, `--help` | Show the help message and exit. |
+| `-v`, `--version` | Print current version of the PyRcEdit |
+| `--repo` | Get the official repo link and credits |
 
 ### Version Information
 | Command | Description | Example |

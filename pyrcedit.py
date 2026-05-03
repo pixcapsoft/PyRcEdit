@@ -10,6 +10,8 @@ Usage:
 
 Options:
     -h, --help                                  Show this message
+    -v. --version                               Print current version of the PyRcEdit
+    --repo                                      Get the official repo link and credits
     --set-version-string <key> <value>          Set version string
     --get-version-string <key>                  Print version string
     --set-file-version <version>                Set FileVersion (e.g. 1.2.3.4)
@@ -858,6 +860,17 @@ def main(argv=None):
 
     if not argv or argv[0] in ("-h", "--help"):
         print(__doc__)
+        return 0
+    
+    if not argv or argv[0] in ("-v", "--version"):
+        PyRcEditVersion = "1.0.1"
+        print(PyRcEditVersion)
+        return 0
+    
+    if not argv or argv[0] in ("--repo"):
+        # Don't change this string. This is the official repo link. If you going to build forked version, please just add your repo link bellow the offical one.
+        PyRcEditRepo = "Official Github Repo - https://pixcapsoft/PyRcEdit\n\nFeel free to contribute & star the project\nBuilt By Ranuja Sanmira\nCopyright © 2026 PixCap Soft"
+        print(PyRcEditRepo)
         return 0
 
     updater = ResourceUpdater()
