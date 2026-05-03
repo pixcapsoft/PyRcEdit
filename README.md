@@ -170,13 +170,13 @@ PyRcEdit provides a modern, lightweight alternative:
 
 ## ❓ FAQ
 
-Why do I need to provide a full path to the executable?
+**Why do I need to provide a full path to the executable?**
 Win32 APIs used internally cannot reliably resolve relative paths.
 
-Why did my .exe get corrupted?
+**Why did my .exe get corrupted?**
 Some PE files use non-standard layouts. Always keep a backup.
 
-Does PyRcEdit work on Linux or macOS?
+**Does PyRcEdit work on Linux or macOS?**
 Not currently. It relies on native Windows APIs.
 
 ---
