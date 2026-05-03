@@ -85,11 +85,11 @@ pyrcedit "path-to-file.exe" [options...]
 
 > ⚠️ Important: Always provide the full path to the executable.  
 > Relative paths may cause:  
-> fatal error : Unable to commit change
+> `fatal error : Unable to commit change`
 
 ### 📁 Directory Mode (Using pyrcedit.prec)
 
-If you frequently run the same commands, place them in a pyrcedit.prec file and run:
+If you frequently run the same commands, place them in a pyrcedit.prec file at your project folder and run:
 
 ```bash
 pyrcedit .
@@ -99,6 +99,22 @@ Example `pyrcedit.prec` contents:
 ```
 "E:\MyFile\app.exe" --set-product-version 1.0.0.0 --set-icon "app.ico"
 ```
+
+> 👉 This feature is really suitable for developers who want to edit their build files each time they build again.
+
+For example imagine this:
+You compiling python application using some compiler that won't let you change the output file's icon. Output file located in `build` folder. You only had to create `pyrcedit.prec` file inside the build folder with following code.
+
+```bash
+<Full-Path-To-Your-EXE> --set-icon <Your-Icon>
+```
+
+Then after compiling your application simply run:
+
+```bash
+pyrcedit .
+```
+and see the magic...
 
 ---
 
