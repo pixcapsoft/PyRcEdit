@@ -60,6 +60,7 @@ git clone https://github.com/pixcapsoft/PyRcEdit.git
 cd PyRcEdit
 pip install pyinstaller
 pyinstaller --onefile --console --name pyrcedit pyrcedit.py
+```
 
 ---
 
