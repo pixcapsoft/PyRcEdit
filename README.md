@@ -44,6 +44,19 @@ pyrcedit "path-to-file.exe" [options...]
 
 > **Note:** PyRcEdit required full path to your executable file. Don't provide just a name even you are in the same folder as file. Otherwise you'll get `fatal error : Unable to commit change error`. Just give full path to exe file as in example.
 
+### Directory Mode (Configuration File)
+
+If you find yourself running the same commands frequently, you can run PyRcEdit against a directory (for example, `.`) instead of an executable. PyRcEdit will look for a `pyrcedit.prec` file in the target directory and execute the arguments contained within it.
+
+```bash
+pyrcedit .
+```
+
+Example `pyrcedit.prec` contents:
+```
+"E:\MyFile\app.exe" --set-product-version 1.0.0.0 --set-icon "app.ico"
+```
+
 ---
 
 ## 📖 Command Reference
