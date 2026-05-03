@@ -34,6 +34,7 @@ import argparse
 import copy
 import io
 from pathlib import Path
+import shlex
 
 # ── Win32 constants ──────────────────────────────────────────────────────────
 LOAD_LIBRARY_AS_DATAFILE = 0x00000002
@@ -872,6 +873,26 @@ def main(argv=None):
         PyRcEditRepo = "Official Github Repo - https://github.com/pixcapsoft/PyRcEdit\n\nFeel free to contribute & star the project\nBuilt By Ranuja Sanmira\nCopyright © 2026 PixCap Soft"
         print(PyRcEditRepo)
         return 0
+
+    if len(argv) == 1 and os.path.isdir(argv[0]):
+        target_dir = argv[0]
+        prec_path = os.path.join(target_dir, "pyrcedit.prec")
+        if os.path.exists(prec_path):
+            try:
+                with open(prec_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                
+                # If a specific local directory was passed, we should change the working dir to it
+                # so that relative paths in pyrcedit.prec are interpreted correctly.
+                os.chdir(target_dir)
+                
+                argv = shlex.split(content, posix=False)
+                if not argv:
+                    return fatal(f"Configuration file is empty: {prec_path}")
+            except Exception as e:
+                return fatal(f"Failed to read {prec_path}: {e}")
+        else:
+            return fatal(f"Configuration file not found: {prec_path}")
 
     updater = ResourceUpdater()
     loaded = False
