@@ -1,25 +1,65 @@
 # 🛠️ PyRcEdit
 
+[![Build](https://github.com/pixcapsoft/PyRcEdit/actions/workflows/build.yml/badge.svg)](https://github.com/pixcapsoft/PyRcEdit/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/v/release/pixcapsoft/PyRcEdit)](https://github.com/pixcapsoft/PyRcEdit/releases)
+[![Downloads](https://img.shields.io/github/downloads/pixcapsoft/PyRcEdit/total.svg)](https://github.com/pixcapsoft/PyRcEdit/releases)
+[![License](https://img.shields.io/github/license/pixcapsoft/PyRcEdit)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
-[![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
+![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
+[![Issues](https://img.shields.io/github/issues/pixcapsoft/PyRcEdit)](https://github.com/pixcapsoft/PyRcEdit/issues)
 
-**PyRcEdit** is a modern Python reimplementation of the archived [rcedit](https://github.com/electron/rcedit) tool originally developed by GitHub/Electron.
+---
 
-It is a fast, command-line utility used to edit embedded resources of Windows PE files (`.exe` / `.dll`). Written in pure Python and leveraging `ctypes` to call Win32 APIs, PyRcEdit saves you the hassle of setting up a heavy C++ build toolchain (CMake, Visual Studio) that the original tool required.
+## 📌 Overview
 
-> **Note:** Because it uses native Win32 APIs for safely modifying the Portable Executable (PE) structure, it currently runs natively on **Windows only**.
-> **Note:** Some .exe, .dll files can be corrupted after using PyRcEdit on it. We highly recomend to you **have copy of your file** before use PyRcEdit on that file.
+**PyRcEdit** is a modern Python reimplementation of the archived  
+[rcedit](https://github.com/electron/rcedit) tool originally developed by GitHub/Electron.
+
+It is a fast, lightweight command-line utility for editing embedded resources inside Windows PE files (`.exe` / `.dll`).  
+Unlike the original C++ tool, PyRcEdit is:
+
+- Written in **pure Python**
+- Uses **ctypes** to call native Win32 APIs
+- Requires **no C++ toolchain** (no Visual Studio, no CMake)
+- Easy to integrate into **CI/CD pipelines**
+
+> ⚠️ **Important Notes**  
+> • PyRcEdit runs **only on Windows**, as it relies on native Win32 APIs.  
+> • Some executables may become corrupted after modification. Always keep a **backup copy** of your file before editing.
 
 ---
 
 ## ✨ Features
-*   📝 Modify Version String attributes (e.g., *File Description*, *Company Name*).
-*   🎨 Change Application Icons (`.ico`).
-*   🛡️ Modify requested Execution Levels for UAC (`asInvoker`, `requireAdministrator`, etc.).
-*   📄 Inject or update Application Manifests natively.
-*   🔤 Edit localized Resource Strings (`RT_STRING`).
-*   📦 Embed or replace Raw Data blobs (`RT_RCDATA`).
-*   ⚡ **Zero compilation required! Just add to PATH** once you download the PyRcEdit.exe you had add it to system PATH and can use it system widely.
+
+- 📝 Modify Version String attributes (e.g., *File Description*, *Company Name*)  
+- 🎨 Replace application icons (`.ico`)  
+- 🛡️ Change UAC Execution Levels (`asInvoker`, `requireAdministrator`, etc.)  
+- 📄 Inject or update application manifests  
+- 🔤 Edit localized string resources (`RT_STRING`)  
+- 📦 Embed or replace raw binary data (`RT_RCDATA`)  
+- ⚡ **Zero compilation required** — just download the `.exe`, add to PATH, and use it anywhere  
+
+---
+
+## 📦 Installation
+
+### 🔹 Download Executable (Recommended)
+Download the latest `PyRcEdit.exe` from the Releases page:
+
+👉 https://github.com/pixcapsoft/PyRcEdit/releases/latest
+
+After downloading:
+
+1. Place the file anywhere you like  
+2. Add the folder to your **System PATH**  
+3. Run `pyrcedit` from any directory  
+
+### 🔹 Install From Source (Optional)
+```bash
+git clone https://github.com/pixcapsoft/PyRcEdit.git
+cd PyRcEdit
+pip install pyinstaller
+pyinstaller --onefile app.py
 
 ---
 
@@ -42,11 +82,13 @@ pyrcedit "path-to-file.exe" [options...]
 > pyrcedit "E:\MyFile\app.exe" --set-icon "icon.ico" --set-file-version "1.0.0.0"
 > ```
 
-> **Note:** PyRcEdit required full path to your executable file. Don't provide just a name even you are in the same folder as file. Otherwise you'll get `fatal error : Unable to commit change error`. Just give full path to exe file as in example.
+> ⚠️ Important: Always provide the full path to the executable.  
+> Relative paths may cause:  
+> fatal error : Unable to commit change
 
-### Directory Mode (Configuration File)
+### 📁 Directory Mode (Using pyrcedit.prec)
 
-If you find yourself running the same commands frequently, you can run PyRcEdit against a directory (for example, `.`) instead of an executable. PyRcEdit will look for a `pyrcedit.prec` file in the target directory and execute the arguments contained within it.
+If you frequently run the same commands, place them in a pyrcedit.prec file and run:
 
 ```bash
 pyrcedit .
@@ -96,9 +138,41 @@ Example `pyrcedit.prec` contents:
 
 ---
 
+💡 Why PyRcEdit?
+
+The original rcedit tool is archived and requires a full C++ build environment.  
+PyRcEdit provides a modern, lightweight alternative:
+
+- Pure Python implementation  
+- No compilation required  
+- Easy to automate  
+- Actively maintained  
+- Ideal for CI/CD pipelines on Windows  
+
+---
+
+## ❓ FAQ
+
+Why do I need to provide a full path to the executable?
+Win32 APIs used internally cannot reliably resolve relative paths.
+
+Why did my .exe get corrupted?
+Some PE files use non-standard layouts. Always keep a backup.
+
+Does PyRcEdit work on Linux or macOS?
+Not currently. It relies on native Windows APIs.
+
+---
+
 ## 🤝 Contributing
 
 Contributions are always welcome! Please read our [contribution guidelines](CONTRIBUTING.md) first to get started.
+
+---
+
+## 🔒 Security
+
+If you discover a vulnerability, please follow our [security guidelines](SECURITY.md)
 
 ---
 
