@@ -1,6 +1,6 @@
 # 🛠️ PyRcEdit
 
-[![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
 
 **PyRcEdit** is a modern Python reimplementation of the archived [rcedit](https://github.com/electron/rcedit) tool originally developed by GitHub/Electron.
@@ -26,7 +26,7 @@ It is a fast, command-line utility used to edit embedded resources of Windows PE
 
 ### Prerequisites
 *   Windows OS
-*   Python 3.8+
+*   Python 3.11+
 
 ### Basic Usage
 

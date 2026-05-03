@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.8'
+          python-version: '3.11'
       - run: pip install pyinstaller
       - run: pyinstaller --onefile --console --name pyrcedit pyrcedit.py
       - name: Upload release asset
